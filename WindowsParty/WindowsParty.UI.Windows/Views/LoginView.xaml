@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="LoginView" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="textBox" Height="23" Margin="342,146,330,0" TextWrapping="Wrap" Text="Test Login View" VerticalAlignment="Top"/>
-
+        <StackPanel Margin="262,105">
+            <TextBox x:Name="Username" Height="40" Margin="5" />
+            <PasswordBox x:Name="Password" Height="40" Margin="5" />
+            <Button x:Name="Login" Content="Log In" Height="40" Margin="5" Visibility="{Binding IsAuthenticating}" IsEnabled="{Binding CanLogin}"/>
+        </StackPanel>
     </Grid>
 </Window>

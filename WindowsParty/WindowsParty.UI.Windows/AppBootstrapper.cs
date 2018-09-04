@@ -17,7 +17,7 @@ namespace WindowsParty.UI.Windows {
 
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
-            container.PerRequest<IShell, ShellViewModel>();
+            container.PerRequest<ShellViewModel>();
             container.PerRequest<LoginViewModel>();
             container.PerRequest<ServerListViewModel>();
         }
