@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsParty.UI.Windows.Views"
+        xmlns:AttachedProperties="clr-namespace:WindowsParty.UI.Windows.AttachedProperties"
         mc:Ignorable="d"
         Title="LoginView" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="262,105">
             <TextBox x:Name="Username" Height="40" Margin="5" />
-            <PasswordBox x:Name="Password" Height="40" Margin="5" />
+            <PasswordBox x:Name="Password" Height="40" Margin="5" AttachedProperties:PasswordHelper.Password="{Binding Password, Mode=TwoWay}" />
             <Button x:Name="Login" Content="Log In" Height="40" Margin="5" Visibility="{Binding IsAuthenticating}" IsEnabled="{Binding CanLogin}"/>
         </StackPanel>
     </Grid>
