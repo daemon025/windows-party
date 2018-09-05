@@ -1,9 +1,13 @@
+using WindowsParty.Core.External;
 using WindowsParty.UI.Windows.ViewModels;
 
 namespace WindowsParty.UI.Windows {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
     using Caliburn.Micro;
+    using MediatR;
+    using WindowsParty.Core.Services;
 
     public class AppBootstrapper : BootstrapperBase {
         SimpleContainer container;
@@ -17,9 +21,11 @@ namespace WindowsParty.UI.Windows {
 
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
-            container.PerRequest<ShellViewModel>();
+            container.PerRequest<IPlaygroundClient, PlaygroundClient>();
+            container.PerRequest<ITokenService, TokenService>();
             container.PerRequest<LoginViewModel>();
             container.PerRequest<ServerListViewModel>();
+            container.PerRequest<ShellViewModel>();
         }
 
         protected override object GetInstance(Type service, string key) {
@@ -35,7 +41,7 @@ namespace WindowsParty.UI.Windows {
         }
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e) {
-            DisplayRootViewFor<LoginViewModel>();
+            DisplayRootViewFor<ShellViewModel>();
         }
     }
 }

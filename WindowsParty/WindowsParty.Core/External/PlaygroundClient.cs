@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Responses;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace WindowsParty.Core.External
 {
@@ -11,9 +12,9 @@ namespace WindowsParty.Core.External
     {
         private readonly string _baseUri;
 
-        public PlaygroundClient(string baseUri)
+        public PlaygroundClient()
         {
-            _baseUri = baseUri;
+            _baseUri = ConfigurationManager.AppSettings["PlaygroundUri"];
         }
 
         public async Task<TokenResponse> GetToken(TokenRequest tokenRequest)

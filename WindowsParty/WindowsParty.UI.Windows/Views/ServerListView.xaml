@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="ServerListView" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="label" Content="TEST" Margin="362,197,392,196" d:LayoutOverrides="Width, Height"/>
     </Grid>
 </Window>

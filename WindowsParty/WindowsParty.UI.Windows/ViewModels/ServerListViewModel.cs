@@ -9,5 +9,6 @@ namespace WindowsParty.UI.Windows.ViewModels
 {
     public class ServerListViewModel : Screen
     {
+
     }
 }

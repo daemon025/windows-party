@@ -13,7 +13,7 @@ namespace WindowsParty.IntegrationTests
 
         public PlaygroundClientTests()
         {
-            _playgroundClient = new PlaygroundClient(ConfigurationManager.AppSettings["PlaygroundUri"]);
+            _playgroundClient = new PlaygroundClient();
         }
 
         [Test]

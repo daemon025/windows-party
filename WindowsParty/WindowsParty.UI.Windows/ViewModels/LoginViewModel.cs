@@ -1,5 +1,6 @@
 ﻿using System;
 using WindowsParty.Core.Requests;
+using WindowsParty.Core.Services;
 using Caliburn.Micro;
 using MediatR;
 
@@ -7,17 +8,18 @@ namespace WindowsParty.UI.Windows.ViewModels
 {
     public class LoginViewModel : Screen
     {
-        private readonly IMediator _mediator;
+        private readonly ITokenService _tokenService;
 
         private bool _canLogin;
         private string _password;
         private string _username;
         private bool _isAuthenticating;
 
-        public LoginViewModel(IMediator mediator)
+        public LoginViewModel(ITokenService tokenService)
         {
-            _mediator = mediator;
+            _tokenService = tokenService;
         }
+
 
         public string Username
         {
@@ -78,8 +80,8 @@ namespace WindowsParty.UI.Windows.ViewModels
             IsAuthenticating = true;
             try
             {
-                var response = await _mediator.Send(new TokenRequest(Username, Password));
-                if (string.IsNullOrEmpty(response.Token))
+                var response = await _tokenService.GetToken(new TokenRequest(Username, Password));
+                if (!string.IsNullOrEmpty(response.Token))
                 {
                     Password = Username = null;
                     // TODO: redirect to server list (store token)
