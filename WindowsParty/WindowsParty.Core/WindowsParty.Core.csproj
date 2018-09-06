@@ -61,6 +61,7 @@
     <Compile Include="Responses\ResponseBase.cs" />
     <Compile Include="Responses\ServerListResponse.cs" />
     <Compile Include="Responses\TokenResponse.cs" />
+    <Compile Include="Services\ServerService.cs" />
     <Compile Include="Services\TokenService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,22 +2,23 @@
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Services;
 using Caliburn.Micro;
-using MediatR;
 
 namespace WindowsParty.UI.Windows.ViewModels
 {
     public class LoginViewModel : Screen
     {
         private readonly ITokenService _tokenService;
+        private readonly IEventAggregator _eventAggregator;
 
         private bool _canLogin;
         private string _password;
         private string _username;
         private bool _isAuthenticating;
 
-        public LoginViewModel(ITokenService tokenService)
+        public LoginViewModel(ITokenService tokenService, IEventAggregator eventAggregator)
         {
             _tokenService = tokenService;
+            _eventAggregator = eventAggregator;
         }
 
 
@@ -84,7 +85,8 @@ namespace WindowsParty.UI.Windows.ViewModels
                 if (!string.IsNullOrEmpty(response.Token))
                 {
                     Password = Username = null;
-                    // TODO: redirect to server list (store token)
+
+                    await _eventAggregator.PublishOnUIThreadAsync(response);
                 }
             }
             catch (Exception ex)

@@ -1,14 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WindowsParty.Core.Services;
 using Caliburn.Micro;
 
 namespace WindowsParty.UI.Windows.ViewModels
 {
     public class ServerListViewModel : Screen
     {
+        private readonly IServerService _serverService;
 
+        public ServerListViewModel(IServerService serverService)
+        {
+            _serverService = serverService;
+        }
+
+        public string Token { get; set; }
+
+        protected override void OnActivate()
+        {
+            base.OnActivate();
+
+            // get server list
+        }
     }
 }

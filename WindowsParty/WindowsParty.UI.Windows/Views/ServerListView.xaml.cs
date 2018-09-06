@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WindowsParty.UI.Windows.Views
@@ -17,7 +18,7 @@ namespace WindowsParty.UI.Windows.Views
     /// <summary>
     /// Interaction logic for ServerListView.xaml
     /// </summary>
-    public partial class ServerListView : Window
+    public partial class ServerListView : UserControl
     {
         public ServerListView()
         {

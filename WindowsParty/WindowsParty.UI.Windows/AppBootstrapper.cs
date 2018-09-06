@@ -19,13 +19,17 @@ namespace WindowsParty.UI.Windows {
         protected override void Configure() {
             container = new SimpleContainer();
 
-            container.Singleton<IWindowManager, WindowManager>();
-            container.Singleton<IEventAggregator, EventAggregator>();
-            container.PerRequest<IPlaygroundClient, PlaygroundClient>();
-            container.PerRequest<ITokenService, TokenService>();
-            container.PerRequest<LoginViewModel>();
-            container.PerRequest<ServerListViewModel>();
-            container.PerRequest<ShellViewModel>();
+            container
+                .Singleton<IWindowManager, WindowManager>()
+                .Singleton<IEventAggregator, EventAggregator>();
+
+            container
+                .PerRequest<IPlaygroundClient, PlaygroundClient>()
+                .PerRequest<ITokenService, TokenService>()
+                .PerRequest<IServerService, ServerService>()
+                .PerRequest<LoginViewModel>()
+                .PerRequest<ServerListViewModel>()
+                .PerRequest<ShellViewModel>();
         }
 
         protected override object GetInstance(Type service, string key) {
