@@ -27,7 +27,7 @@
                 <ColumnDefinition x:Name="Grid"/>
                 <ColumnDefinition x:Name="RightSideImage"/>
             </Grid.ColumnDefinitions>
-            <ListView ItemsSource="{Binding Path=ServerList}">
+            <ListView x:Name="ServerListControl" ItemsSource="{Binding Path=ServerList, Mode=OneWay, NotifyOnTargetUpdated=True}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="NAME"></GridViewColumn>

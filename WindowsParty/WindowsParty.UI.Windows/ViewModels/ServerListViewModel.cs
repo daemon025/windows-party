@@ -2,6 +2,7 @@
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Responses;
 using WindowsParty.Core.Services;
+using WindowsParty.UI.Windows.Views;
 using Caliburn.Micro;
 
 namespace WindowsParty.UI.Windows.ViewModels
@@ -34,8 +35,14 @@ namespace WindowsParty.UI.Windows.ViewModels
         {
             base.OnActivate();
 
-            var serverResponse = await _serverService.GetServerList(new ServerListRequest() { Token = Token });
+            var serverResponse = await _serverService.GetServerList(new ServerListRequest() {Token = Token});
             ServerList = serverResponse?.Servers;
+            var view = this.GetView() as ServerListView;
+            if (view != null)
+            {
+                view.ServerListControl.ItemsSource = null;
+                view.ServerListControl.ItemsSource = ServerList;
+            }
         }
 
         public async void Logout()
