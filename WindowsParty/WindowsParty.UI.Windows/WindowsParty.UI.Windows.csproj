@@ -134,13 +134,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Assets\testio-logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindowsParty.Core\WindowsParty.Core.csproj">
       <Project>{974B0B5F-5889-4888-994C-AECBE86A4B0F}</Project>
       <Name>WindowsParty.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\server-list-right-side.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

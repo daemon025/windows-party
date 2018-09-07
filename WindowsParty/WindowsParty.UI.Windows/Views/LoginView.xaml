@@ -8,8 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Margin="262,105">
-        <TextBox x:Name="Username" Height="40" Margin="5" />
-        <PasswordBox x:Name="Password" Height="40" Margin="5" AttachedProperties:PasswordHelper.Password="{Binding Password, Mode=TwoWay}" />
-        <Button x:Name="Login" Content="Log In" Height="40" Margin="5" Visibility="{Binding IsAuthenticating}" IsEnabled="{Binding CanLogin}"/>
+        <TextBox x:Name="Username" Height="40" Margin="5" FontSize="16" />
+        <PasswordBox x:Name="Password" Height="40" Margin="5" AttachedProperties:PasswordHelper.Password="{Binding Password, Mode=TwoWay}" FontSize="16" />
+        <Button x:Name="Login" Content="Log In" Height="40" Margin="5" Visibility="{Binding IsAuthenticating}" IsEnabled="{Binding CanLogin}" Background="#9ED532" Foreground="White"/>
     </StackPanel>
 </UserControl>

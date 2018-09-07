@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using WindowsParty.Core.External;
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Responses;

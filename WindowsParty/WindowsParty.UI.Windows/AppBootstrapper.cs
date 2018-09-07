@@ -1,14 +1,13 @@
 using WindowsParty.Core.External;
 using WindowsParty.UI.Windows.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Windows.Threading;
+using Caliburn.Micro;
+using WindowsParty.Core.Services;
 
-namespace WindowsParty.UI.Windows {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using Caliburn.Micro;
-    using MediatR;
-    using WindowsParty.Core.Services;
-
+namespace WindowsParty.UI.Windows
+{
     public class AppBootstrapper : BootstrapperBase {
         SimpleContainer container;
 
@@ -46,6 +45,13 @@ namespace WindowsParty.UI.Windows {
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e) {
             DisplayRootViewFor<ShellViewModel>();
+        }
+
+        protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            // TODO: log errors
+
+            base.OnUnhandledException(sender, e);
         }
     }
 }

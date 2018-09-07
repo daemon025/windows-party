@@ -4,7 +4,7 @@ using Caliburn.Micro;
 namespace WindowsParty.UI.Windows.ViewModels
 {
     // https://caliburnmicro.com/documentation/4.0.0/event-aggregator
-    public class ShellViewModel : Conductor<object>, IHandle<TokenResponse>
+    public class ShellViewModel : Conductor<object>, IHandle<TokenResponse>, IHandle<LogoutResponse>
     {
         private readonly LoginViewModel _loginViewModel;
         private readonly ServerListViewModel _serverListViewModel;
@@ -27,8 +27,13 @@ namespace WindowsParty.UI.Windows.ViewModels
         public void Handle(TokenResponse message)
         {
             // TODO: dispose login window?
-            _serverListViewModel.Token = message.Token; // not the best way prob
+            _serverListViewModel.Token = message.Token; // not the best way
             ActivateItem(_serverListViewModel);
+        }
+
+        public void Handle(LogoutResponse message)
+        {
+            ActivateItem(_loginViewModel);
         }
     }
 }
