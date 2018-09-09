@@ -26,7 +26,6 @@ namespace WindowsParty.UI.Windows.ViewModels
 
         public void Handle(TokenResponse message)
         {
-            // TODO: dispose login window?
             _serverListViewModel.Token = message.Token; // not the best way
             ActivateItem(_serverListViewModel);
         }

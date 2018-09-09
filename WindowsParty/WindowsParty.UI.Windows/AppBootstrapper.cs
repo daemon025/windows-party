@@ -46,12 +46,5 @@ namespace WindowsParty.UI.Windows
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e) {
             DisplayRootViewFor<ShellViewModel>();
         }
-
-        protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            // TODO: log errors
-
-            base.OnUnhandledException(sender, e);
-        }
     }
 }

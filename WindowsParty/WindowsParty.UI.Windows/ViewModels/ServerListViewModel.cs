@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Responses;
 using WindowsParty.Core.Services;
@@ -9,6 +10,8 @@ namespace WindowsParty.UI.Windows.ViewModels
 {
     public class ServerListViewModel : Screen
     {
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(ServerListViewModel));
+
         private readonly IServerService _serverService;
         private readonly IEventAggregator _eventAggregator;
         private IEnumerable<ServerInfo> _servers;
@@ -35,13 +38,20 @@ namespace WindowsParty.UI.Windows.ViewModels
         {
             base.OnActivate();
 
-            var serverResponse = await _serverService.GetServerList(new ServerListRequest() {Token = Token});
-            ServerList = serverResponse?.Servers;
-            var view = this.GetView() as ServerListView;
-            if (view != null)
+            try
             {
-                view.ServerListControl.ItemsSource = null;
-                view.ServerListControl.ItemsSource = ServerList;
+                var serverResponse = await _serverService.GetServerList(new ServerListRequest() { Token = Token });
+                ServerList = serverResponse?.Servers;
+                var view = this.GetView() as ServerListView;
+                if (view != null)
+                {
+                    view.ServerListControl.ItemsSource = null;
+                    view.ServerListControl.ItemsSource = ServerList;
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message, ex);
             }
         }
 

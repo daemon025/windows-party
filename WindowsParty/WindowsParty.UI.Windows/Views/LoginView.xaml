@@ -10,6 +10,6 @@
     <StackPanel Margin="262,105">
         <TextBox x:Name="Username" Height="40" Margin="5" FontSize="16" />
         <PasswordBox x:Name="Password" Height="40" Margin="5" AttachedProperties:PasswordHelper.Password="{Binding Password, Mode=TwoWay}" FontSize="16" />
-        <Button x:Name="Login" Content="Log In" Height="40" Margin="5" Visibility="{Binding IsAuthenticating}" IsEnabled="{Binding CanLogin}" Background="#9ED532" Foreground="White"/>
+        <Button x:Name="Login" Content="Log In" Height="40" Margin="5" Visibility="{Binding IsAuthenticating}" Background="#9ED532" Foreground="White"/>
     </StackPanel>
 </UserControl>

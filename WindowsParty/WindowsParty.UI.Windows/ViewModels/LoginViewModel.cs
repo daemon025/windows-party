@@ -10,6 +10,8 @@ namespace WindowsParty.UI.Windows.ViewModels
         private readonly ITokenService _tokenService;
         private readonly IEventAggregator _eventAggregator;
 
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(LoginViewModel));
+
         private bool _canLogin;
         private string _password;
         private string _username;
@@ -91,8 +93,7 @@ namespace WindowsParty.UI.Windows.ViewModels
             }
             catch (Exception ex)
             {
-                // TODO: log exception
-                // TODO: show validation msg in UI
+                _log.Error(ex.Message, ex);
             }
             finally
             {
