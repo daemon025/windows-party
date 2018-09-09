@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using WindowsParty.Core.External;
+using WindowsParty.Core.External.PlaygroundClient;
 using WindowsParty.Core.Requests;
 using NUnit.Framework;
 
@@ -44,10 +45,7 @@ namespace WindowsParty.IntegrationTests
                 Password = "bad one"
             };
 
-            var response = _playgroundClient.GetToken(tokenRequest).Result;
-
-            Assert.IsNotNull(response);
-            Assert.IsNull(response.Token);
+            Assert.ThrowsAsync<ClientException>(() => _playgroundClient.GetToken(tokenRequest));
         }
 
         [Test]

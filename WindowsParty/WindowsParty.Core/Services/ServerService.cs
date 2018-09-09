@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using WindowsParty.Core.External;
+using WindowsParty.Core.External.PlaygroundClient;
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Responses;
 

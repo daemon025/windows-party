@@ -3,6 +3,7 @@ using WindowsParty.UI.Windows.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Threading;
+using WindowsParty.Core.External.PlaygroundClient;
 using Caliburn.Micro;
 using WindowsParty.Core.Services;
 

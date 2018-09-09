@@ -43,6 +43,7 @@
       <HintPath>..\packages\RestSharp.106.3.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -54,8 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="External\IPlaygroundClient.cs" />
-    <Compile Include="External\PlaygroundClient.cs" />
+    <Compile Include="External\PlaygroundClient\ClientException.cs" />
+    <Compile Include="External\PlaygroundClient\IPlaygroundClient.cs" />
+    <Compile Include="External\PlaygroundClient\PlaygroundClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHandlers\ServerListRequestHandler.cs" />
     <Compile Include="RequestHandlers\TokenRequestHandler.cs" />

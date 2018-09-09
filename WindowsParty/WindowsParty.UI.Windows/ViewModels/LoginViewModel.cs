@@ -1,4 +1,5 @@
 ﻿using System;
+using WindowsParty.Core.External.PlaygroundClient;
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Services;
 using Caliburn.Micro;
@@ -16,6 +17,7 @@ namespace WindowsParty.UI.Windows.ViewModels
         private string _password;
         private string _username;
         private bool _isAuthenticating;
+        private string _errorMsg;
 
         public LoginViewModel(ITokenService tokenService, IEventAggregator eventAggregator)
         {
@@ -48,6 +50,20 @@ namespace WindowsParty.UI.Windows.ViewModels
 
                 _password = value;
                 NotifyOfPropertyChange(() => Password);
+                Validate();
+            }
+        }
+
+        public string ErrorMsg
+        {
+            get { return _errorMsg; }
+            set
+            {
+                if (_password == value)
+                    return;
+
+                _errorMsg = value;
+                NotifyOfPropertyChange(() => ErrorMsg);
                 Validate();
             }
         }
@@ -86,10 +102,15 @@ namespace WindowsParty.UI.Windows.ViewModels
                 var response = await _tokenService.GetToken(new TokenRequest(Username, Password));
                 if (!string.IsNullOrEmpty(response.Token))
                 {
-                    Password = Username = null;
+                    Password = Username = ErrorMsg = null;
 
                     await _eventAggregator.PublishOnUIThreadAsync(response);
                 }
+            }
+            catch (ClientException ex)
+            {
+                _log.Warn(ex.Message, ex);
+                ErrorMsg = "Incorrect username or password";
             }
             catch (Exception ex)
             {

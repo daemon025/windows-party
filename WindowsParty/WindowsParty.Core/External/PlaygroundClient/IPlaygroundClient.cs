@@ -2,7 +2,7 @@
 using WindowsParty.Core.Requests;
 using WindowsParty.Core.Responses;
 
-namespace WindowsParty.Core.External
+namespace WindowsParty.Core.External.PlaygroundClient
 {
     public interface IPlaygroundClient
     {
